@@ -1,7 +1,7 @@
 # Paso 1: Compilar
 FROM maven:3.8.4-openjdk-17 AS build
 COPY . .
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests -Dmaven.resources.filtering=false
 
 # Paso 2: Correr (Usamos Amazon Corretto 17, que es más confiable)
 FROM amazoncorretto:17-alpine-jdk
